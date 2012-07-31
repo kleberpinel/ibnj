@@ -1,0 +1,26 @@
+<%= form_for @rua, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ponto_de_referencia, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ponto_de_referencia, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :bairro_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:rua, :bairro_id, Bairro.all, :id, :nome, :class => 'number_field') %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                ruas_path, :class => 'btn' %>
+  </div>
+<% end %>

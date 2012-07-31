@@ -1,0 +1,95 @@
+<%- model_class = PesquisaReligiosa -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<table style="margin-left: 50px">
+    <tr><td><strong>Pessoa</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.pessoa.nome %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Situação da casa encontrada</strong></td></tr>
+    <tr><td>
+        <% if @pesquisa_religiosa.estado_encontrado == 0 %>
+            Niguém em casa
+        <% elsif @pesquisa_religiosa.estado_encontrado == 1 %>
+            Casa vazia
+        <% elsif @pesquisa_religiosa.estado_encontrado == 2 %>
+            Negou informação
+        <% elsif @pesquisa_religiosa.estado_encontrado == 3 %>
+            Outros
+        <% end %>
+    </td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Em sua opinião quais são as maiores necessidades desta comunidade?</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.necessidade_comunidade %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Você frequenta alguma Religião? (preencha em caso positivo)</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.religiao %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Assiste com que frequência às reuniões?</strong></td></tr>
+    <tr><td>
+        <% if @pesquisa_religiosa.frequencia_reunioes == 0 %>
+            Semanalmente
+        <% elsif @pesquisa_religiosa.frequencia_reunioes == 1 %>
+            Mensalmente
+        <% elsif @pesquisa_religiosa.frequencia_reunioes == 2 %>
+            Ocasiões especiais
+        <% end %>
+    </td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Já assistiu algum culto em alguma igreja evangélica?</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.anteriomente_igreja_evangelica = true ? "Sim" : "Não" %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Possui bíblia?</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.tem_bilia = true ? "Sim" : "Não" %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Costuma ler?</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.costuma_ler = true ? "Sim" : "Não" %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Sente necessidade de conhecer mais a Deus?</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.necessidade_conhecer_deus = true ? "Sim" : "Não" %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Gostaria de receber gratuitamente um estudo bíblico em sua casa?</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.estudo_biblico_casa = true ? "Sim" : "Não" %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Primeira opção de horario</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.opcao1_horario %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Segunda opção de horario</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.opcao2_horario %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Você tem certeza da vida eterna e de que irá para o céu quando morrer?</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.certeza_vida_eterna_ceu = true ? "Sim" : "Não" %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Suponha que você estivesse diante de Deus neste momento e Ele lhe perguntasse: 'Por que deveira deixa-lo entrar no céu?' O que você responderia?</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.pq_entrar_no_ceu %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+
+    <tr><td><strong>Observações gerais</strong></td></tr>
+    <tr><td><%= @pesquisa_religiosa.obs %></td></tr>
+</table>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              pesquisa_religiosas_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_pesquisa_religiosa_path(@pesquisa_religiosa), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              pesquisa_religiosa_path(@pesquisa_religiosa),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  estado_encontrado: 1
+  necessidade_comunidade: MyString
+  religiao: MyString
+  frequencia_reunioes: 1
+  tem_bilia: 
+  costuma_ler: false
+  necessidade_conhecer_deus: false
+  anteriomente_igreja_evangelica: false
+  estudo_biblico_casa: false
+  opcao1_horario: MyString
+  opcao2_horario: MyString
+  certeza_vida_eterna_ceu: false
+  pq_entrar_no_ceu: MyString
+  obs: MyText
+
+two:
+  estado_encontrado: 1
+  necessidade_comunidade: MyString
+  religiao: MyString
+  frequencia_reunioes: 1
+  tem_bilia: 
+  costuma_ler: false
+  necessidade_conhecer_deus: false
+  anteriomente_igreja_evangelica: false
+  estudo_biblico_casa: false
+  opcao1_horario: MyString
+  opcao2_horario: MyString
+  certeza_vida_eterna_ceu: false
+  pq_entrar_no_ceu: MyString
+  obs: MyText

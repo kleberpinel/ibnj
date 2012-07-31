@@ -1,0 +1,34 @@
+<%- model_class = PesquisaReligiosa -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:pessoa) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pesquisa_religiosas.each do |pesquisa_religiosa| %>
+      <tr>
+        <td><%= link_to pesquisa_religiosa.id, pesquisa_religiosa_path(pesquisa_religiosa) %></td>
+        <td><%= pesquisa_religiosa.pessoa.nome %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_pesquisa_religiosa_path(pesquisa_religiosa), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      pesquisa_religiosa_path(pesquisa_religiosa),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_pesquisa_religiosa_path,
+            :class => 'btn btn-primary' %>
