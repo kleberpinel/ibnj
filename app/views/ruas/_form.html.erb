@@ -1,4 +1,20 @@
 <%= form_for @rua, :html => { :class => 'form-horizontal' } do |f| %>
+  
+  <div class="control-group">
+    <%= f.label :cep, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cep, :class => 'text_field' %>
+    </div>
+  </div>
+
+
+  <div class="control-group">
+    <%= f.label :bairro, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :bairro, :class => 'text_field' %>
+    </div>
+  </div>
+
   <div class="control-group">
     <%= f.label :nome, :class => 'control-label' %>
     <div class="controls">
@@ -9,12 +25,6 @@
     <%= f.label :ponto_de_referencia, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :ponto_de_referencia, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :bairro_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select(:rua, :bairro_id, Bairro.all, :id, :nome, :class => 'number_field') %>
     </div>
   </div>
 

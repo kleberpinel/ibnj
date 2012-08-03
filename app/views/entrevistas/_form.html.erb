@@ -1,0 +1,115 @@
+<%= form_for @entrevista, :html => { :class => 'form-horizontal' } do |f| %>
+  
+  <table>
+      <tr><td><%= f.label "Pesquisa", :class => 'control-label', :style => "text-align: left; font-weight: bolder;" %></td></tr>
+      <tr><td><%= collection_select(:entrevista, :pesquisa_id, Pesquisa.all, :id, :nome_pesquisa_nomes_entrevistadores,{}, {:style => 'width: 900px'}) %></td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label :data_pesquisa, :class => 'control-label', :style => "text-align: left; font-weight: bolder;" %></td></tr>
+      <tr><td>
+        <%= f.text_field :data_pesquisa, :class => 'text_field', :id => "pesquisa", :value => @entrevista.data_pesquisa.to_s %>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('#pesquisa').datepicker({
+            format: 'dd/mm/yyyy'
+          });
+        });
+      </script>
+
+      <tr><td witdth="700px"><hr></td></tr>
+
+      <tr><td><%= f.label :pessoa_id, :class => 'control-label', :style => "text-align: left; font-weight: bolder;" %></td></tr>
+      <tr><td><%= collection_select(:entrevista, :entrevistado_id, Pessoa.all, :id, :nome, :class => 'number_field') %></td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Situação da casa encontrada", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td>
+        <label class="radio"><%= f.radio_button :estado_encontrado, "0" %>Niguém em casa</label>
+        <label class="radio"><%= f.radio_button :estado_encontrado, "1" %>Casa vazia</label>
+        <label class="radio"><%= f.radio_button :estado_encontrado, "2" %>Negou informação</label>
+        <label class="radio"><%= f.radio_button :estado_encontrado, "3" %>Outros</label>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Em sua opinião quais são as maiores necessidades desta comunidade?", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td><%= f.text_field :necessidade_comunidade, :class => 'text_field' %></td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Você frequenta alguma Religião? (preencha em caso positivo)", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td><%= f.text_field :religiao, :class => 'text_field' %></td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Assiste com que frequência às reuniões?", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td>
+        <label class="radio"><%= f.radio_button :frequencia_reunioes, "0" , :class => 'number_field'%>Semanalmente</label>
+        <label class="radio"><%= f.radio_button :frequencia_reunioes, "1" , :class => 'number_field'%>Mensalmente</label>
+        <label class="radio"><%= f.radio_button :frequencia_reunioes, "2" , :class => 'number_field'%>Ocasiões especiais</label>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Já assistiu algum culto em alguma igreja evangélica?", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td>
+        <label class="radio"><%= f.radio_button :anteriomente_igreja_evangelica, "true", :class => 'check_box'  %>Sim</label>
+        <label class="radio"><%= f.radio_button :anteriomente_igreja_evangelica, "false", :class => 'check_box'  %>Não</label>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Possui bíblia?", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td>
+        <label class="radio"><%= f.radio_button :tem_bilia, "true", :class => 'check_box'  %>Sim</label>
+        <label class="radio"><%= f.radio_button :tem_bilia, "false", :class => 'check_box'  %>Não</label>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Costuma ler?", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td>
+        <label class="radio"><%= f.radio_button :costuma_ler, "true", :class => 'check_box'  %>Sim</label>
+        <label class="radio"><%= f.radio_button :costuma_ler, "false", :class => 'check_box'  %>Não</label>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><label class="control-label" style="text-align: left; width: 600px; font-weight: bolder;">Sente necessidade de conhecer mais a Deus?</label></td></tr>
+      <tr><td>
+        <label class="radio"><%= f.radio_button :necessidade_conhecer_deus, "true", :class => 'check_box'  %>Sim</label>
+        <label class="radio"><%= f.radio_button :necessidade_conhecer_deus, "false", :class => 'check_box'  %>Não</label>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Gostaria de receber gratuitamente um estudo bíblico em sua casa?", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td>
+        <label class="radio"><%= f.radio_button :estudo_biblico_casa, "true", :class => 'check_box'  %>Sim</label>
+        <label class="radio"><%= f.radio_button :estudo_biblico_casa, "false", :class => 'check_box'  %>Não</label>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Primeira opção de horario", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td><%= f.text_field :opcao1_horario, :class => 'text_field' %></td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Segunda opção de horario", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td><%= f.text_field :opcao2_horario, :class => 'text_field' %></td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Você tem certeza da vida eterna e de que irá para o céu quando morrer?", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td>
+        <label class="radio"><%= f.radio_button :certeza_vida_eterna_ceu, "true", :class => 'check_box'  %>Sim</label>
+        <label class="radio"><%= f.radio_button :certeza_vida_eterna_ceu, "false", :class => 'check_box'  %>Não</label>
+      </td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><tr><td><label class="control-label" style="text-align: left; width: 600px; font-weight: bolder;">Suponha que você estivesse diante de Deus neste momento e ele lhe perguntasse: 'Por que deveira deixa-lo entrar no céu?' o que você responderia?</label></td></tr>
+      <tr><td><%= f.text_field :pq_entrar_no_ceu, :class => 'text_field' %></td></tr>
+      <tr><td>&nbsp;</td></tr>
+
+      <tr><td><%= f.label "Observações gerais", :class => 'control-label', :style => "text-align: left; width: 600px; font-weight: bolder;" %></td></tr>
+      <tr><td><%= f.text_area :obs, :class => 'text_area', :style => "width: 800px; height: 50px" %></td></tr>
+  </table>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                entrevistas_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -9,15 +9,13 @@
   <dt><strong><%= model_class.human_attribute_name(:nascimento) %>:</strong></dt>
   <dd><%= @pessoa.nascimento %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:sexo) %>:</strong></dt>
-  <dd><%= @pessoa.sexo=1?"Feminino":"Masculino" %></dd>
+  <dd><%= @pessoa.sexo == 1?"Feminino":"Masculino" %></dd>
   <dt><strong><%= model_class.human_attribute_name(:rua_id) %>:</strong></dt>
   <dd><%= @pessoa.rua.nome %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:numero) %>:</strong></dt>
   <dd><%= @pessoa.numero %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:complemento) %>:</strong></dt>
   <dd><%= @pessoa.complemento %>&nbsp;</dd>
-  <dt><strong><%= model_class.human_attribute_name(:cep) %>:</strong></dt>
-  <dd><%= @pessoa.cep %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
   <dd><%= @pessoa.telefone %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>

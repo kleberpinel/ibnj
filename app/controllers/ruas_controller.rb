@@ -1,7 +1,5 @@
 class RuasController < ApplicationController
 
-  autocomplete :bairro, :nome, :full => true
-
   # GET /ruas
   # GET /ruas.json
   def index
@@ -28,9 +26,7 @@ class RuasController < ApplicationController
   # GET /ruas/new.json
   def new
     @rua = Rua.new
-
-    @bairros =  Bairro.all
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @rua }

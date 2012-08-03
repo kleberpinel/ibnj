@@ -1,16 +1,20 @@
 Ibnj::Application.routes.draw do
 
+  resources :entrevistas
+
+  resources :pesquisas
+
   resources :pesquisa_religiosas
 
-  resources :pessoas do
-    get :autocomplete_rua_nome, :on => :collection
-  end
+  resources :pessoas 
 
   resources :ruas do
     get :autocomplete_bairro_nome, :on => :collection
   end
 
   resources :bairros 
+
+  match "/autocomplete/pessoas",    :to => "autocomplete#pessoas", :as => "autocomplete_pessoas", :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -61,7 +65,7 @@ Ibnj::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'application#index'
 
   # See how all your routes lay out with "rake routes"
 

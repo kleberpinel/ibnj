@@ -19,7 +19,7 @@
         <td><%= link_to rua.id, rua_path(rua) %></td>
         <td><%= rua.nome %></td>
         <td><%= rua.ponto_de_referencia %></td>
-        <td><%= rua.bairro.nome %></td>
+        <td><%= rua.bairro %></td>
         <td><%=l rua.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

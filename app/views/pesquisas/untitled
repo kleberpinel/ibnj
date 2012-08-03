@@ -1,0 +1,56 @@
+
+
+<div class="control-group">
+    <%= f.label "Entrevistadores", :class => 'control-label' %>
+    <div class="controls">
+      <% Pessoa.all.each do |pessoa| -%>
+        <%= check_box_tag :pessoa_ids, pessoa.id, @pesquisa.pessoas.include?(pessoa), :name => "pesquisa[pessoa_ids][]" -%>
+        <%= pessoa.nome %>
+    <% end -%>
+
+    </div>
+  </div>
+
+
+
+  <div class="control-group">
+    <%= f.label "Entrevistadores", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nomes_entrevistadores, :class => 'text_field', :id => "nomes_entrevistadores" %>
+      <input type="hidden" name="pesquisa[pessoa_ids]" id="entrevistadores"/>
+    </div>
+  </div>
+  <script type="text/javascript">
+      itens_entrevistadores = new Object(); 
+      <% @pesquisa.entrevistadores.all.each do |entrevistadores| -%>
+        inserirItemArray(<%= entrevistadores.pessoa.id %>, "<%= entrevistadores.pessoa.nome %>");
+      <% end -%>
+
+      function inserirItemArray(id, nome){
+        itens_entrevistadores[nome] = id;
+      }
+
+      function removerItemArray(nome){
+        delete itens_entrevistadores[nome];
+      }
+
+     $(document).ready(function(){
+      $('#nomes_entrevistadores').tagsInput({
+        autocomplete_url:'/autocomplete/pessoas.json'
+      });
+
+      $("#form").bind({
+        submit: function(){
+        	id_entrevistadores = _.map(itens_entrevistadores, function(nome, id){ 
+        		return id; 
+        	});
+
+          $("#entrevistadores\\[0\\]").val(id_entrevistadores[2]);
+        }
+      });
+    });
+  </script>
+
+
+
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eDE/2EfQKBeHSJ4GTBTKRSYQoEnN+X5z4XU28FVuVog=", "pesquisa"=>{"nome"=>"TrasnPaulista", "pessoa_ids"=>["1", "2", "3"]}, "commit"=>"Update Pesquisa", "id"=>"1"}

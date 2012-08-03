@@ -6,7 +6,6 @@ class CreatePessoas < ActiveRecord::Migration
       t.integer :sexo
       t.integer :numero
       t.string :complemento
-      t.string :cep
       t.string :telefone
       t.string :email
 

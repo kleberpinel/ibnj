@@ -17,9 +17,9 @@
     <% @pessoas.each do |pessoa| %>
       <tr>
         <td><%= link_to pessoa.id, pessoa_path(pessoa) %></td>
-        <td><%= pessoa.nome %></td>
+        <td><%= raw pessoa.link_nome %></td>
         <td><%= pessoa.nascimento %></td>
-        <td><%= pessoa.sexo=1?"Feminino":"Masculino" %></td>
+        <td><%= pessoa.sexo == 1 ? "Feminino" : "Masculino" %></td>
         <td><%= pessoa.rua.nome %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

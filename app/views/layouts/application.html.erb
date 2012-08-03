@@ -1,79 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ibnj</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <title>Ibnj</title>  
+  <%= javascript_include_tag "jquery-1.7.2.min.js" %>
+
+  <!-- Bootstrap -->
+  <%= stylesheet_link_tag 'bootstrap/bootstrap.css' %>
+  <%= stylesheet_link_tag 'bootstrap/bootstrap-responsive.css' %>
+  <%= stylesheet_link_tag 'bootstrap/docs.css' %>
+  <%= stylesheet_link_tag 'bootstrap/prettify.css' %>
+
+  <%= javascript_include_tag "bootstrap/bootstrap.js" %>
+
+  <!-- Datepicker -->
+  <%= stylesheet_link_tag 'bootstrap/datepicker.css' %>
+
+  <%= javascript_include_tag "bootstrap/bootstrap-datepicker.js" %>
+
+  <!-- tagsinput -->
+  <%= stylesheet_link_tag 'jquery.tagsinput.css' %>
   <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.22.custom.css' %>
+
+  <%= javascript_include_tag 'jquery-ui-1.8.22.custom.min' %>  
+  <%= javascript_include_tag 'jquery.tagsinput.js' %>
+
+  <%= javascript_include_tag 'underscore.js' %>
+
   <%= csrf_meta_tags %>
+  <meta http-equiv="content-language" content="pt">
 </head>
 <body>
+	
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </a>
+        <img src="/images/topo.png"/>
+        <!--
+        <div class="nav-collapse">
 
-	<div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">IBNJ - Gerenciamento de pessoas</a>
-          <!--
-          <div class="nav-collapse">
+        <!-- The drop down menu --
+        <ul class="nav pull-right">
+        <li><a href="/users/sign_up">Sign Up</a></li>
+        <li class="divider-vertical"></li>
+        <li class="drop down">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+        <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+        <!-- Login form here --
+        <form action="[YOUR ACTION]" method="post" accept-charset="UTF-8">
+        <input id="user_username" style="margin-bottom: 15px;" type="text" name="user[username]" size="30" />
+        <input id="user_password" style="margin-bottom: 15px;" type="password" name="user[password]" size="30" />
+        <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+        <label class="string optional" for="user_remember_me"> Remember me</label>
 
-            <!-- The drop down menu --
-	        <ul class="nav pull-right">
-	          <li><a href="/users/sign_up">Sign Up</a></li>
-	          <li class="divider-vertical"></li>
-	          <li class="drop down">
-	            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-	            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-	              <!-- Login form here --
-	              <form action="[YOUR ACTION]" method="post" accept-charset="UTF-8">
-					  <input id="user_username" style="margin-bottom: 15px;" type="text" name="user[username]" size="30" />
-					  <input id="user_password" style="margin-bottom: 15px;" type="password" name="user[password]" size="30" />
-					  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
-					  <label class="string optional" for="user_remember_me"> Remember me</label>
-					 
-					  <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
-					</form>
-	            </div>
-	          </li>
-	        </ul>
-    		-->
-          </div><!--/.nav-collapse -->
+        <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+        </form>
         </div>
-      </div>
+        </li>
+        </ul>
+        -->
+      </div><!--/.nav-collapse -->
     </div>
+  </div>  
+    
 
-    <div class="container">
+	<div class="container">
 
-    	<header class="jumbotron subhead" id="overview">
-		  <h1>Atividades</h1>
-		  <p class="lead">Escolha a atividade que você quer executar</p>
-		  <div class="subnav subnav-fixed">
-			<ul class="nav nav-pills">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastro <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="/bairros">Bairro</a></li>
-						<li><a href="/ruas">Rua</a></li>
-						<li><a href="/pessoas">Pessoa</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Pesquisa <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="/pesquisa_religiosas">TransPaulista</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		</header>
+		<header class="jumbotron subhead" id="overview">
+    <!--<h1>Atividades</h1>--><br>
+    <p class="lead">Escolha a atividade que deseja executar</p>
+    <div class="subnav">
 
 
-		
+      <ul class="nav nav-pills">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastro <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/ruas">Ruas</a></li>
+            <li><a href="/pessoas">Pessoas</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pesquisas <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/pesquisas">Entrevistadores</a></li>
+            <li><a href="/entrevistas">TransPaulista</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </header>
+
 		<%= yield %>
+
 	</div> <!-- /container -->
+<script type="text/javascript">
+    $(document).scroll(function(){
+        // If has not activated (has no attribute "data-top"
+        if (!$('.subnav').attr('data-top')) {
+            // If already fixed, then do nothing
+            if ($('.subnav').hasClass('subnav-fixed')) return;
+            // Remember top position
+            var offset = $('.subnav').offset()
+            $('.subnav').attr('data-top', 110);
+        }
+
+        if ($('.subnav').attr('data-top') - $('.subnav').outerHeight() <= $(this).scrollTop())
+            $('.subnav').addClass('subnav-fixed');
+        else
+            $('.subnav').removeClass('subnav-fixed');
+    });
+  </script>
 </body>
 </html>

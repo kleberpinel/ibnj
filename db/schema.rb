@@ -11,17 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730141854) do
+ActiveRecord::Schema.define(:version => 20120801115320) do
 
-  create_table "bairros", :force => true do |t|
-    t.string   "nome"
-    t.string   "cidade"
-    t.string   "ponto_de_referencia"
+  create_table "entrevistadores", :force => true do |t|
+    t.integer  "pesquisa_id"
+    t.integer  "pessoa_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pesquisa_religiosas", :force => true do |t|
+  create_table "entrevistas", :force => true do |t|
     t.integer  "estado_encontrado"
     t.string   "necessidade_comunidade"
     t.string   "religiao"
@@ -36,7 +35,15 @@ ActiveRecord::Schema.define(:version => 20120730141854) do
     t.boolean  "certeza_vida_eterna_ceu"
     t.string   "pq_entrar_no_ceu"
     t.text     "obs"
-    t.integer  "pessoa_id"
+    t.date     "data_pesquisa"
+    t.integer  "entrevistado_id"
+    t.integer  "pesquisa_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pesquisas", :force => true do |t|
+    t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20120730141854) do
     t.integer  "sexo"
     t.integer  "numero"
     t.string   "complemento"
-    t.string   "cep"
     t.string   "telefone"
     t.string   "email"
     t.integer  "rua_id"
@@ -57,8 +63,9 @@ ActiveRecord::Schema.define(:version => 20120730141854) do
 
   create_table "ruas", :force => true do |t|
     t.string   "nome"
+    t.string   "cep"
+    t.string   "bairro"
     t.string   "ponto_de_referencia"
-    t.integer  "bairro_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,52 @@
+<%= form_for @pesquisa, :html => { :class => 'form-horizontal', :id => "form"} do |f| %>
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'text_field' %>
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <%= f.label "Entrevistadores", :class => 'control-label' %>
+    <div class="controls">
+      <input type="text" id="nomes_entrevistadores" class="text_field" value="<%= @pesquisa.nomes_entrevistadores %>"/>
+      <div id="inputs_hidden"></div>
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+      itens_entrevistadores = new Object(); 
+      <% @pesquisa.entrevistadores.all.each do |entrevistadores| -%>
+        inserirItemArray(<%= entrevistadores.pessoa.id %>, "<%= entrevistadores.pessoa.nome %>");
+      <% end -%>
+
+      function inserirItemArray(id, nome){
+        itens_entrevistadores[nome] = id;
+      }
+
+      function removerItemArray(nome){
+        delete itens_entrevistadores[nome];
+      }
+
+     $(document).ready(function(){
+      $('#nomes_entrevistadores').tagsInput({
+        autocomplete_url:'/autocomplete/pessoas.json'
+      });
+
+      $("#form").bind({
+        submit: function(){
+          $.each(itens_entrevistadores, function(key, value) { 
+            $("#inputs_hidden").append('<input type="hidden" name="pesquisa[pessoa_ids][]" value="'+value+'"/>')
+          });   
+        }
+      });
+    });
+  </script>
+
+ 
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                pesquisas_path, :class => 'btn' %>
+  </div>
+<% end %>

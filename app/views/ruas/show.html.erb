@@ -4,12 +4,16 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:bairro) %>:</strong></dt>
+  <dd><%= @rua.bairro %>&nbsp;</dd>
+  <dt><strong><%= model_class.human_attribute_name(:cep) %>:</strong></dt>
+  <dd><%= @rua.cep %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
   <dd><%= @rua.nome %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:ponto_de_referencia) %>:</strong></dt>
   <dd><%= @rua.ponto_de_referencia %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:bairro) %>:</strong></dt>
-  <dd><%= @rua.bairro.nome %>&nbsp;</dd>
+  <dd><%= @rua.bairro %>&nbsp;</dd>
 </dl>
 
 <div class="form-actions">
