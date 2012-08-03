@@ -28,9 +28,9 @@
               pessoas_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_pessoa_path(@pessoa), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+  <%= link_to t('destroy', :default => t("helpers.links.destroy")),
               pessoa_path(@pessoa),
-              :method => 'delete',
+              :method => :delete,
               :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
               :class => 'btn btn-danger' %>
 </div>

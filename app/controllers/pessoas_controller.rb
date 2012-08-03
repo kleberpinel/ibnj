@@ -78,6 +78,8 @@ class PessoasController < ApplicationController
     @pessoa = Pessoa.find(params[:id])
     @pessoa.destroy
 
+    logger.info "----------"
+
     respond_to do |format|
       format.html { redirect_to pessoas_url }
       format.json { head :ok }

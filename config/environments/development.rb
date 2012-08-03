@@ -24,7 +24,8 @@ Ibnj::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
-  config.assets.compile = false
+  config.assets.compile = true
+  config.assets.precompile += %w( *.css *.js )
 
   # Expands the lines which load the assets
   config.assets.debug = true
