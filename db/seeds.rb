@@ -8,16 +8,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-rua = Rua.create(nome: "Rua Henrique Dumont", ponto_de_referencia: "", bairro: "Vila Carrão", cep: "03948-877")
+rua = Rua.create(nome: "Rua Professor Rodolfo São Thiago", ponto_de_referencia: "", bairro: "Belenzinho", cep: "03059-050")
 
-entrevistada = Pessoa.create(nome: "Andrea Marteiro Pinto", telefone: "3467-7322", sexo: 1, rua: rua)
-entrevistador1 = Pessoa.create(nome: "Cristiano Almeida Bernardo", telefone: "3467-7322", sexo: 0, rua: rua)
-entrevistador2 = Pessoa.create(nome: "Kleber Pinel Bernardo da Silva", telefone: "3467-7322", sexo: 0, rua: rua)
-
+entrevistador = Pessoa.create(nome: "Kleber Pinel Bernardo da Silva", telefone: "(11) 8010-1060", email: "kleberpinel@gmail.com", password: "kleber123", sexo: 0, rua_id: rua.id)
 
 pesquisa = Pesquisa.create(nome: "TrasnPaulista")
-pesquisa.entrevistadores.create(:pessoa => entrevistador1)
-pesquisa.entrevistadores.create(:pessoa => entrevistador2)
-
-entrevista = Entrevista.create(entrevistado: entrevistada, pesquisa: pesquisa, religiao: "Evangélico")
-
+pesquisa.entrevistadores.create(:pessoa => entrevistador)

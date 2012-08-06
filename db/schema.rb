@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801115320) do
+ActiveRecord::Schema.define(:version => 20120806113300) do
 
   create_table "entrevistadores", :force => true do |t|
     t.integer  "pesquisa_id"
     t.integer  "pessoa_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "entrevistas", :force => true do |t|
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(:version => 20120801115320) do
     t.date     "data_pesquisa"
     t.integer  "entrevistado_id"
     t.integer  "pesquisa_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "pesquisas", :force => true do |t|
     t.string   "nome"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "pessoas", :force => true do |t|
@@ -55,19 +55,31 @@ ActiveRecord::Schema.define(:version => 20120801115320) do
     t.integer  "numero"
     t.string   "complemento"
     t.string   "telefone"
-    t.string   "email"
     t.integer  "rua_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "pessoas", ["email"], :name => "index_pessoas_on_email", :unique => true
+  add_index "pessoas", ["reset_password_token"], :name => "index_pessoas_on_reset_password_token", :unique => true
 
   create_table "ruas", :force => true do |t|
     t.string   "nome"
     t.string   "cep"
     t.string   "bairro"
     t.string   "ponto_de_referencia"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
 end

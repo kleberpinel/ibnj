@@ -1,5 +1,7 @@
 class AutocompleteController < ApplicationController
   
+  before_filter :authenticate_pessoa!
+  
   # GET /pessoas
   # GET /pessoas.json
   def pessoas

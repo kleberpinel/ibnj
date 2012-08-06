@@ -1,4 +1,7 @@
 class PesquisasController < ApplicationController
+
+  before_filter :authenticate_pessoa!
+  
   # GET /pesquisas
   # GET /pesquisas.json
   def index

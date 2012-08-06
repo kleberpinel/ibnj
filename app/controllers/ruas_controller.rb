@@ -1,5 +1,7 @@
 class RuasController < ApplicationController
 
+  before_filter :authenticate_pessoa!
+
   # GET /ruas
   # GET /ruas.json
   def index
@@ -74,7 +76,14 @@ class RuasController < ApplicationController
   # DELETE /ruas/1.json
   def destroy
     @rua = Rua.find(params[:id])
-    @rua.destroy
+
+    begin
+      @rua.destroy
+      flash[:success] = "successfully destroyed." 
+    rescue ActiveRecord::DeleteRestrictionError => e
+      @rua.errors.add(:base, e)
+      flash[:error] = "#{e}"
+    end
 
     respond_to do |format|
       format.html { redirect_to ruas_url }

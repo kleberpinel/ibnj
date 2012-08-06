@@ -1,4 +1,16 @@
 <%= form_for @pessoa, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <% if @pessoa.errors.any? %>  
+  <div id="errorExplanation">  
+    <h2><%= pluralize(@pessoa.errors.count, "error") %> prohibited this pessoa from being saved:</h2>  
+    <ul>  
+    <% @pessoa.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div>  
+  <% end %>
+
   <div class="control-group">
     <%= f.label :nome, :class => 'control-label' %>
     <div class="controls">
@@ -53,13 +65,10 @@
       <%= f.text_field :telefone, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
   
+  <div class="control-group">
+    Clique <%= link_to('aqui', edit_pessoa_registration_path, :method => :get) %> para editar suas preferencias de acesso.
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

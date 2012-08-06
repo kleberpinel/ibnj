@@ -7,7 +7,6 @@ class CreatePessoas < ActiveRecord::Migration
       t.integer :numero
       t.string :complemento
       t.string :telefone
-      t.string :email
 
       t.references :rua
 

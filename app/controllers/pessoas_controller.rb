@@ -1,6 +1,6 @@
 class PessoasController < ApplicationController
 
-  autocomplete :rua, :nome, :full => true
+  before_filter :authenticate_pessoa!
 
   # GET /pessoas
   # GET /pessoas.json
@@ -76,10 +76,15 @@ class PessoasController < ApplicationController
   # DELETE /pessoas/1.json
   def destroy
     @pessoa = Pessoa.find(params[:id])
-    @pessoa.destroy
 
-    logger.info "----------"
-
+    begin
+      @pessoa.destroy
+      flash[:success] = "successfully destroyed." 
+    rescue ActiveRecord::DeleteRestrictionError => e
+      @pessoa.errors.add(:base, e)
+      flash[:error] = "#{e}"
+    end
+    
     respond_to do |format|
       format.html { redirect_to pessoas_url }
       format.json { head :ok }
